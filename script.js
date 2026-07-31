@@ -4,9 +4,8 @@ let fullData = [];
 let filteredData = [];
 let currentGrilla = '';
 
-// URL base de la API
-// TODO: la autenticación (token) se resolverá vía proxy (rama Proxy), aún pendiente
-const API_BASE_URL = 'https://botai.smartdataautomation.com/api_backend_ai/dinamic-db/report/119/productos_bago';
+// URL base de la API (proxy en Railway que agrega el token de autenticación)
+const API_BASE_URL = 'https://productosbago-production.up.railway.app/api/Bago/productos';
 
 // Cargar datos de la API
 async function loadData() {
