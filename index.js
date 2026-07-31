@@ -4,10 +4,13 @@ const fetch = require("node-fetch");
 const app = express();
 
 const PORT = process.env.PORT;
+const RAW_TOKEN = process.env.API_TOKEN || "";
 const AUTH_HEADERS = {
-    Authorization: `Token ${process.env.API_TOKEN}`,
+    Authorization: `Token ${RAW_TOKEN}`,
     "Content-Type": "application/json",
 };
+
+console.log(`API_TOKEN cargado: longitud=${RAW_TOKEN.length}, primeros4=${RAW_TOKEN.slice(0, 4)}, ultimos4=${RAW_TOKEN.slice(-4)}`);
 
 app.use(cors());
 
