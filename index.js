@@ -19,6 +19,13 @@ app.get("/api/Bago/productos", async (req, res) => {
 
         const response = await fetch(apiUrl, { headers: AUTH_HEADERS });
         const data = await response.json();
+
+        if (!response.ok) {
+            console.error(`El backend respondió ${response.status}:`, data);
+            return res.status(response.status).json(data);
+        }
+
+        console.log(`Backend OK (${response.status}), registros:`, Array.isArray(data) ? data.length : Array.isArray(data.result) ? data.result.length : 'formato inesperado');
         res.json(data);
     } catch (err) {
         console.error("Error en el proxy productos Bago:", err);
