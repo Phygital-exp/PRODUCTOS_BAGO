@@ -1,0 +1,327 @@
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Contenedor general */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Modo oscuro */
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Contenedor principal centrado */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Contenedor del buscador */
+.search-container {
+    width: 100%;
+    background-color: #fdfdfd;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.dark-mode .search-container {
+    background-color: #222;
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+}
+
+
+/* Título */
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+
+/* Botón de Modo Oscuro */
+#darkModeToggle {
+    border: none;
+    background: #222;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+}
+
+.dark-mode #darkModeToggle {
+    background: white;
+    color: black;
+}
+
+#darkModeToggle:hover {
+    background: #444;
+}
+
+.dark-mode #darkModeToggle:hover {
+    background: #ddd;
+}
+
+/* Input de búsqueda y selector */
+.search-container input[type="text"],
+.search-container select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #dfe6e9;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.search-container input[type="text"]:focus,
+.search-container select:focus {
+    border-color: #2980b9;
+}
+
+/* Estilos específicos para el selector en modo oscuro */
+.dark-mode .search-container select {
+    background-color: #333;
+    color: white;
+    border-color: #555;
+}
+
+.dark-mode .search-container input[type="text"] {
+    background-color: #333;
+    color: white;
+    border-color: #555;
+}
+
+/* Contenedor de Resultados */
+#results {
+    margin-top: 20px;
+    max-height: 400px; /* Ajuste de altura */
+    overflow-y: auto;  /* Habilita el scroll */
+    scrollbar-width: none; /* Scroll invisible en Firefox */
+    -ms-overflow-style: none; /* Scroll invisible en IE y Edge */
+    width: 100%;
+}
+
+/* Scroll Invisible en Chrome y Edge */
+#results::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tarjeta de cada resultado */
+.result-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s ease-out forwards;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+}
+
+.dark-mode .result-item {
+    background-color: #333;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ícono de copiar */
+.material-icons.copy-icon {
+    cursor: pointer;
+    font-size: 20px;
+    color: #3498db;
+    transition: color 0.3s;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.material-icons.copy-icon:hover {
+    color: #2c3e50;
+}
+
+/* Estados de carga y error */
+.loading-state, .error-state, .info-message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.dark-mode .loading-state, 
+.dark-mode .error-state,
+.dark-mode .info-message {
+    background-color: #333;
+}
+
+.info-message {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 20px;
+}
+
+.dark-mode .info-message {
+    background-color: #1e3a5f;
+    border-left-color: #64b5f6;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+.dark-mode .spinner {
+    border-color: #555;
+    border-top-color: #3498db;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.loading-state p, .error-state p {
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+}
+
+.info-message p {
+    color: #1976d2;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.dark-mode .loading-state p, 
+.dark-mode .error-state p {
+    color: #ccc;
+}
+
+.dark-mode .info-message p {
+    color: #90caf9;
+}
+
+/* Responsividad para diferentes tamaños de pantalla */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 900px;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    .result-item {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 750px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    .result-item {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 600px;
+    }
+    #searchTitle {
+        font-size: 22px;
+    }
+    #searchTitle .logo {
+        width: 30px;
+    }
+    .search-container {
+        width: 90%;
+    }
+    .result-item {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 95%;
+    }
+    #searchTitle {
+        font-size: 20px;
+    }
+    #searchTitle .logo {
+        width: 25px;
+    }
+    .search-container {
+        width: 100%;
+        padding: 20px;
+    }
+    .result-item {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    #searchTitle {
+        font-size: 18px;
+    }
+    #searchTitle .logo {
+        width: 20px;
+    }
+    .result-item {
+        font-size: 13px;
+        padding: 8px;
+    }
+}
